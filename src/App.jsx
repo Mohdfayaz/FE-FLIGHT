@@ -1,11 +1,26 @@
-
+import { Outlet, useLoaderData } from "react-router";
+import Layout from "./layouts/Layout";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { clearUser, setUser } from "./redux/features/auth/userSlice";
 
 const App = () => {
-  return (
-    <>
-      <h1 className="text-4xl text-center text-blue-500">Hello world!</h1 >
-  </>
-  )
-}
+  const user = useLoaderData();
+  const dispatch = useDispatch();
 
-export default App
+  useEffect(() => {
+    if (user) {
+      dispatch(setUser(user));
+    } else {
+      dispatch(clearUser());
+    }
+  }, [user]);
+
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  );
+};
+
+export default App;
