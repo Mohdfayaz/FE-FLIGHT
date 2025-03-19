@@ -2,9 +2,9 @@
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello World!</h1>
-    </div>
+    <>
+      <h1 className="text-4xl text-center text-blue-500">Hello world!</h1 >
+  </>
   )
 }
 
